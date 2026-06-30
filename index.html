@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Crohn's Disease in 2026</title>
+<meta name="description" content="Understanding Crohn's disease — and a restorative, total-health protocol. Prepared for Yosef.">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Open Graph / share preview -->
+<meta property="og:title" content="Crohn's Disease in 2026">
+<meta property="og:description" content="Understanding the disease — and a restorative, total-health protocol.">
+<meta property="og:type" content="article">
+
+<!-- Fonts: Newsreader (serif body) + Inter (UI) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     DESIGN TOKENS
+     ============================================================ */
+  :root {
+    --bg:        #FBF9F4;
+    --surface:   #FFFFFF;
+    --ink:       #1F2428;
+    --muted:     #6B7178;
+    --accent:    #1D5C54;
+    --accent-bg: #E9F1EF;
+    --accent-bd: #BCD6D0;
+    --warn:      #8F3A36;
+    --warn-bg:   #F7E9E7;
+    --warn-bd:   #E3BDB8;
+    --note:      #8A6312;
+    --note-bg:   #FAF1DA;
+    --note-bd:   #ECD39A;
+    --hair:      #E7E2D8;
+
+    --serif: "Newsreader", "Iowan Old Style", "Charter", Georgia, "Times New Roman", serif;
+    --sans: "Inter", system-ui, -apple-system, sans-serif;
+
+    --measure: 40rem;
+    --pad: 20px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:        #14181A;
+      --surface:   #1B2022;
+      --ink:       #E9E6E0;
+      --muted:     #9AA1A6;
+      --accent:    #5FB3A8;
+      --accent-bg: #16302C;
+      --accent-bd: #28534C;
+      --warn:      #E0A39E;
+      --warn-bg:   #2C1B19;
+      --warn-bd:   #523330;
+      --note:      #E3C786;
+      --note-bg:   #2A2415;
+      --note-bd:   #4D421F;
+      --hair:      #2A3033;
+    }
+  }
+
+  /* ============================================================
+     RESET / BASE
+     ============================================================ */
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.125rem;          /* 18px */
+    line-height: 1.65;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--accent-bg); }
+
+  /* ============================================================
+     READING PROGRESS BAR
+     ============================================================ */
+  #progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--accent);
+    z-index: 60;
+    transition: width .08s linear;
+  }
+  @media (prefers-reduced-motion: reduce) { #progress { transition: none; } }
+
+  /* ============================================================
+     STICKY TOP BAR
+     ============================================================ */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--hair);
+  }
+  .topbar-inner {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .brand {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .brand .dot { color: var(--muted); font-weight: 400; }
+
+  .contents-btn {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--accent-bd);
+    border-radius: 10px;
+    padding: 7px 12px;
+    min-height: 36px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background .15s ease;
+  }
+  .contents-btn:hover { background: var(--accent-bg); }
+  .contents-btn .chev { transition: transform .2s ease; font-size: 11px; }
+  .contents-btn[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+  /* ============================================================
+     CONTENTS OVERLAY SHEET
+     ============================================================ */
+  #scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.28);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, visibility .25s ease;
+    z-index: 55;
+  }
+  #scrim.open { opacity: 1; visibility: visible; }
+
+  #sheet {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 58;
+    background: var(--surface);
+    border-bottom: 1px solid var(--hair);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.12);
+    transform: translateY(-100%);
+    transition: transform .28s cubic-bezier(.22,.61,.36,1);
+    max-height: 88vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  #sheet.open { transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    #sheet, #scrim { transition: none; }
+  }
+
+  .sheet-inner {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 18px var(--pad) 26px;
+  }
+  .sheet-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+  }
+  .sheet-title {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--muted);
+  }
+  .sheet-close {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 6px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 8px;
+  }
+  .sheet-close:hover { background: var(--accent-bg); color: var(--accent); }
+
+  .toc-group-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--accent);
+    margin: 18px 0 4px;
+  }
+  .toc-group-label:first-of-type { margin-top: 8px; }
+
+  .toc-link {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 11px 10px;
+    min-height: 44px;
+    border-radius: 8px;
+    line-height: 1.3;
+    border-left: 2px solid transparent;
+  }
+  .toc-link:hover { background: var(--accent-bg); }
+  .toc-link .num {
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    font-size: 13px;
+    min-width: 18px;
+  }
+  .toc-link.active {
+    color: var(--accent);
+    background: var(--accent-bg);
+    border-left-color: var(--accent);
+    font-weight: 500;
+  }
+  .toc-link.active .num { color: var(--accent); }
+
+  /* ============================================================
+     LAYOUT / READING COLUMN
+     ============================================================ */
+  main {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+
+  .hero {
+    padding: 40px 0 8px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.875rem;          /* ~30px */
+    line-height: 1.18;
+    letter-spacing: -.01em;
+    margin: 0 0 .35em;
+  }
+  .subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.18rem;
+    line-height: 1.4;
+    color: var(--accent);
+    margin: 0 0 1.4em;
+    font-weight: 400;
+  }
+  .preface {
+    font-size: .98rem;
+    line-height: 1.6;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  section { padding: 2.5rem 0 0; scroll-margin-top: 66px; }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.4375rem;         /* ~23px */
+    line-height: 1.22;
+    letter-spacing: -.005em;
+    margin: 0 0 .7em;
+  }
+  h2 .sec-num {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: .72em;
+    color: var(--accent);
+    margin-right: .15em;
+  }
+  h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.1875rem;         /* ~19px */
+    line-height: 1.3;
+    margin: 1.6em 0 .5em;
+  }
+
+  p { margin: 0 0 1.05em; }
+  main > section > p:last-child { margin-bottom: 0; }
+
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--accent-bd);
+  }
+  a:hover { text-decoration-color: var(--accent); }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--hair);
+    margin: 2.6rem 0 .2rem;
+  }
+
+  /* lists */
+  ul, ol { margin: 0 0 1.1em; padding-left: 1.4em; }
+  li { margin: 0 0 .55em; padding-left: .15em; }
+  li::marker { color: var(--muted); }
+  ol li::marker { color: var(--accent); font-weight: 600; }
+
+  /* kicker labels above sections (used in hero/closing) */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--accent);
+    margin: 0 0 .6em;
+  }
+
+  /* ============================================================
+     CALLOUT CARDS
+     ============================================================ */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 1.5em 0;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-bg);
+    font-size: 1.02rem;
+    line-height: 1.55;
+  }
+  .callout p { margin: 0; }
+  .callout .label { font-weight: 600; }
+
+  .callout.info  { border-left-color: var(--accent); background: var(--accent-bg); }
+  .callout.info .label  { color: var(--accent); }
+
+  .callout.note  { border-left-color: var(--note);   background: var(--note-bg); }
+  .callout.note .label  { color: var(--note); }
+
+  .callout.warn  { border-left-color: var(--warn);   background: var(--warn-bg); }
+  .callout.warn .label  { color: var(--warn); }
+
+  /* ============================================================
+     THESIS PULL-BLOCKS
+     ============================================================ */
+  .thesis {
+    background: var(--accent);
+    color: #FBFDFC;
+    border-radius: 14px;
+    padding: 22px 22px;
+    margin: 1.8em 0;
+    font-size: 1.16rem;
+    line-height: 1.5;
+    letter-spacing: .002em;
+  }
+  .thesis p { margin: 0; }
+  .thesis p + p { margin-top: .7em; }
+  .thesis strong { color: #FFFFFF; font-weight: 600; }
+  .thesis em { color: #E6F3F0; }
+  @media (prefers-color-scheme: dark) {
+    .thesis { color: #0C1413; }
+    .thesis strong { color: #061211; }
+    .thesis em { color: #123733; }
+  }
+
+  /* ============================================================
+     FIGURE / IMAGE
+     ============================================================ */
+  figure { margin: 1.6em 0; }
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--hair);
+    background: var(--surface);
+  }
+  figure figcaption {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 8px;
+    line-height: 1.45;
+  }
+  figure.img-failed { display: none; }
+
+  /* ============================================================
+     RESPONSIVE TABLES  (card transform <640px)
+     ============================================================ */
+  .table-wrap { margin: 1.5em 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.45;
+  }
+  thead th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent-bd);
+    padding: 10px 12px;
+    vertical-align: bottom;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  tbody td {
+    padding: 11px 12px;
+    border-bottom: 1px solid var(--hair);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody td:first-child { color: var(--ink); }
+  td strong { color: var(--ink); }
+
+  /* total row emphasis */
+  tbody tr.total-row td {
+    border-top: 2px solid var(--accent-bd);
+    background: var(--accent-bg);
+  }
+
+  @media (max-width: 639px) {
+    table thead { position: absolute; left: -9999px; }
+    table, tbody, tr, td { display: block; width: 100%; }
+    tbody tr {
+      background: var(--surface);
+      border: 1px solid var(--hair);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 0 0 12px;
+    }
+    tbody tr.total-row {
+      background: var(--accent-bg);
+      border-color: var(--accent-bd);
+    }
+    tbody td {
+      padding: 0;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      margin-bottom: 8px;
+    }
+    tbody td:last-child { margin-bottom: 0; }
+    tbody td:first-child {
+      font-family: var(--serif);
+      font-size: 1.12rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--hair);
+    }
+    /* label from data-label */
+    tbody td:not(:first-child)::before {
+      content: attr(data-label);
+      font-size: 10.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--accent);
+    }
+    tbody td:first-child::before { content: none; }
+  }
+
+  /* ============================================================
+     BACK TO TOP
+     ============================================================ */
+  #totop {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 40;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--hair);
+    background: color-mix(in srgb, var(--surface) 90%, transparent);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    color: var(--accent);
+    font-size: 19px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  }
+  #totop.show { opacity: 1; visibility: visible; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { #totop { transition: opacity .25s ease; transform: none; } }
+
+  /* ============================================================
+     SECTION REVEAL ANIMATION
+     ============================================================ */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .4s ease, transform .4s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  footer {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 2.5rem var(--pad) 4rem;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* slightly larger type on bigger screens */
+  @media (min-width: 700px) {
+    body { font-size: 1.1875rem; }
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <span class="brand">Crohn's <span class="dot">·</span> 2026</span>
+    <button class="contents-btn" id="contentsBtn" aria-expanded="false" aria-controls="sheet" aria-haspopup="true">
+      Contents <span class="chev" aria-hidden="true">▾</span>
+    </button>
+  </div>
+</header>
+
+<div id="scrim"></div>
+
+<nav id="sheet" aria-label="Table of contents" aria-hidden="true">
+  <div class="sheet-inner">
+    <div class="sheet-head">
+      <span class="sheet-title">Contents</span>
+      <button class="sheet-close" id="sheetClose" aria-label="Close contents">×</button>
+    </div>
+    <!-- TOC auto-generated by script -->
+    <div id="tocList"></div>
+  </div>
+</nav>
+
+<main>
+
+  <div class="hero reveal">
+    <h1>Crohn's Disease in 2026</h1>
+    <p class="subtitle">Understanding the disease — and a restorative, total-health protocol.</p>
+    <p class="preface">Prepared for Yosef. Synthesized with Claude Opus 4.8 from current research, mechanistic pharmacology, and practitioner evidence as of mid-2026 — and written to reach past the patent-driven clinical canon, where unpatentable nutrients and repair compounds stay under-studied relative to their promise. Honest throughout about what's proven versus still experimental. Educational only; not medical advice, and no substitute for the team managing your care.</p>
+  </div>
+
+  <hr>
+
+  <!-- ===================== BACKGROUND ===================== -->
+
+  <section id="big-idea" data-group="Background" class="reveal">
+    <h2><span class="sec-num">1</span>The big idea: a spectrum, not a binary</h2>
+    <div class="thesis">
+      <p>Crohn's is the loud, concentrated end of a continuum that nearly everyone in the modern world sits somewhere on. Low-grade inflammation, a leaky gut barrier, microbiome depletion, bacterial overgrowth — these are widespread, usually quiet enough to ignore. Crohn's is what it looks like when the same feedback loop is turned all the way up and <em>locks in</em>.</p>
+    </div>
+    <p>When you were first diagnosed, the core problems — inflammation, gut-biome dysregulation, a permeable barrier — may have seemed like one-off features unique to the disease. Today they're understood as mass chronic patterns running, in quieter form, through the whole population.</p>
+    <p>That reframe dissolves the line between "treating disease" and "optimizing health." The levers that calm Crohn's — restoring the barrier, feeding the microbiome, lowering inflammatory and oxidative load, supporting repair — are the same levers that keep any gut resilient. You're not running a broken machine; you're running the same machine under heavier load, where the feedback is louder and the margin thinner. Which makes this less a sick-list than a high-resolution version of what serious modern health maintenance looks like for anyone.</p>
+  </section>
+
+  <section id="what-crohns-is" data-group="Background" class="reveal">
+    <h2><span class="sec-num">2</span>What Crohn's actually is</h2>
+    <p>Not an infection. Not classic autoimmunity. A <strong>breakdown of immune tolerance toward your own gut bacteria</strong>, in a genetically susceptible host. The immune system, which normally ignores the trillions of commensal microbes in the gut, begins treating them as a threat. The result is a self-sustaining loop that runs full-thickness through the bowel wall:</p>
+    <ol>
+      <li><strong>Barrier breach</strong> — the mucus layer thins and the tight junctions between gut-lining cells loosen, letting bacterial components cross into the wall.</li>
+      <li><strong>Innate misfire</strong> — immune cells sense those bacteria but, in a susceptible host, fail to clear them cleanly or signal "harmless."</li>
+      <li><strong>Adaptive overreaction</strong> — T cells attack the commensal bacteria, releasing inflammatory cytokines (TNF-α, IL-12/23, IL-17), orchestrated by the master switch <strong>NF-κB</strong>.</li>
+      <li><strong>Feed-forward lock-in</strong> — those cytokines, plus reactive oxygen species from activated immune cells, cause more barrier damage → more bacteria cross → more inflammation. The loop now sustains itself.</li>
+    </ol>
+    <div class="callout info">
+      <p><span class="label">Why this matters — every intervention later targets a specific step of this loop.</span> Hold the four steps in mind and the whole protocol organizes itself.</p>
+    </div>
+    <p>The two features that make Crohn's distinct: it's <strong>transmural</strong> (through every layer, not just the surface) and <strong>patchy</strong> (skip lesions). The transmural quality is what drives its signature complications over time — strictures, fistulas, abscesses.</p>
+  </section>
+
+  <section id="genes-environment" data-group="Background" class="reveal">
+    <h2><span class="sec-num">3</span>Genes load the gun; environment pulls the trigger</h2>
+    <p>Crohn's is neither purely genetic nor purely environmental. Identical-twin concordance runs ~30–50% (vs ~3–4% in fraternal twins) — big enough to prove a strong genetic component, small enough to prove genes aren't destiny. Genetics explain roughly half of risk; environment and microbiome supply the rest.</p>
+    <p>And there's no single "Crohn's gene." Susceptibility is spread across 140+ loci that cluster around one job: <em>sensing, clearing and tolerating gut bacteria</em> (NOD2, ATG16L1, IRGM). Genetically, a susceptible person is simply worse at handling intestinal microbes. That's the loaded gun. The modern environment — overwhelmingly diet, via its effect on the microbiome and barrier — pulls the trigger.</p>
+  </section>
+
+  <section id="global-dietary" data-group="Background" class="reveal">
+    <h2><span class="sec-num">4</span>A global, dietary disease</h2>
+    <p>If genes were the whole story, prevalence would track ancestry. Instead it tracks <strong>industrialization</strong> — the clearest evidence that environment does the heavy lifting. Crohn's emerged in the industrialized West, but the decisive observation is what happens as a society Westernizes its diet: incidence climbs, far too fast for the gene pool to have changed. Migration studies agree — people who move from low- to high-incidence regions, and especially their children, take on the new country's risk.</p>
+    <p><strong>The gradient, roughly:</strong></p>
+    <ul>
+      <li><strong>United States</strong> — ~224 per 100,000 prevalence; ~21 new cases per 100,000/yr; ~1.5M living with IBD.</li>
+      <li><strong>Japan</strong> — prevalence climbed from ~34 → 55 per 100,000 (2010s); incidence ~5.5 per 100,000/yr and rising with a Westernizing diet.</li>
+      <li><strong>China</strong> — still rare (urban incidence ~0.5 → 0.71 per 100,000) but climbing year over year.</li>
+    </ul>
+    <p><strong>What in the modern diet does the damage:</strong> emulsifiers (polysorbate-80, carboxymethylcellulose) in ultra-processed food thin the protective mucus layer (attacking step 1); low fermentable fiber starves the bacteria that make <strong>butyrate</strong>, the colon's main fuel and a regulatory-immune signal; and the combination drives <strong>dysbiosis</strong>. Same exposures act on everyone — in most people they cause quiet permeability; in a susceptible person they can tip the loop into lock-in.</p>
+  </section>
+
+  <section id="stress-gut-brain" data-group="Background" class="reveal">
+    <h2><span class="sec-num">5</span>Stress and the gut–brain axis</h2>
+    <p>Stress isn't a vague aggravator — it has a concrete mechanism, which is why a stable course can worsen during a hard stretch. The brain and gut are wired together through the autonomic nervous system and the cortisol axis. Psychological stress measurably <strong>raises intestinal permeability</strong> (loosening the same tight junctions as step 1), shifts immune tone toward inflammation, and reshapes the microbiome. It's one of the best-documented flare triggers.</p>
+    <div class="callout info">
+      <p><span class="label">Why this matters — if your disease tracks your stress, that's real, not imagined.</span> Which means stress regulation is a genuine lever, and nearly free. Modalities with actual gut-disease evidence: gut-directed hypnotherapy, mindfulness-based stress reduction, and CBT, on a base of sleep, movement, and deliberate parasympathetic ("vagal") practice.</p>
+    </div>
+  </section>
+
+  <section id="standard-treatment" data-group="Background" class="reveal">
+    <h2><span class="sec-num">6</span>What standard treatment does — and the gap it leaves</h2>
+    <p>Here's the bridge from understanding to protocol. Nearly every approved Crohn's therapy works <em>one half</em> of the problem.</p>
+    <p><strong>The conventional ladder</strong> — nutritional therapy (EEN / the Crohn's Disease Exclusion Diet, which can induce remission); corticosteroids (induction only); immunomodulators / "chemo" agents (methotrexate, thiopurines); biologics (anti-TNF, anti-integrin, anti-IL-23); JAK inhibitors; and surgery for strictures or fistulas. These are the backbone, and they work.</p>
+    <p><strong>Where "chemotherapy" fits.</strong> In Crohn's, "chemo" usually means immunosuppressants first developed for cancer — methotrexate, the thiopurines, or in severe disease cyclophosphamide. (Worth confirming the exact agent with the care team.) They act on <strong>step 3</strong>: broadly suppressing the activated immune cells driving the cytokine cascade. Powerful, but non-selective — they quiet the whole immune response, which is why they carry a real monitoring and infection-risk burden. And structurally, they <em>suppress the fire without rebuilding what it burned</em>. That's why disease is so often controlled but not healed, and why escalating immunosuppression alone can feel like a treadmill.</p>
+    <div class="thesis">
+      <p>The pattern: conventional medicine is almost entirely <strong>subtractive</strong> — built to take the immune attack <em>away</em>. Almost nothing in it is <strong>additive</strong> — actively <em>rebuilding</em> the barrier and regenerating injured tissue. Healing is treated as something that should follow once inflammation is gone, not a process anything directly drives. <strong>That additive gap is the entire rationale for the protocol that follows.</strong></p>
+    </div>
+    <div class="callout warn">
+      <p><span class="label">Important — this protocol sits alongside conventional care, never replaces it.</span> It's designed to work the half that immunosuppression structurally can't: lowering the inputs that provoke the immune system, quenching oxidative damage, and supplying repair signals. Anything added — especially alongside chemotherapy — should be cleared with the treating oncologist and gastroenterologist first.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- ===================== THE PROTOCOL ===================== -->
+
+  <section id="protocol-built" data-group="The Protocol" class="reveal">
+    <h2><span class="sec-num">7</span>The protocol: how it's built</h2>
+    <p>Four layers, <strong>highest-evidence first</strong>. Most of the achievable benefit — and nearly all the proven benefit — lives in Layer 1. Layers 2–3 add mechanistically distinct support that the foundations don't reach. Two disciplines make it work: keep the highest-evidence items central, and change one thing at a time so any response can be attributed.</p>
+    <ul>
+      <li><strong>Layer 1 · Foundations</strong> — diet, stress, vitamin D, butyrate, micronutrients. <em>Well-established.</em></li>
+      <li><strong>Layer 2 · Antioxidant arm</strong> — NAC + liposomal glutathione. <em>Promising.</em></li>
+      <li><strong>Layer 3 · Repair / peptides</strong> — the KLOW blend (one injectable). <em>Investigational.</em></li>
+      <li><strong>Monitoring</strong> — calprotectin, CRP, 25(OH)D, a symptom journal. <em>Essential.</em></li>
+    </ul>
+  </section>
+
+  <section id="layer-1" data-group="The Protocol" class="reveal">
+    <h2><span class="sec-num">8</span>Layer 1 — Foundations</h2>
+    <p><strong>Diet</strong> is the largest lever, acting upstream on barrier and microbiome. Reduce ultra-processed foods and emulsifiers; raise fermentable/soluble fiber to feed butyrate producers — <em>except</em> in stricturing disease, where bulky insoluble fiber is a mechanical hazard and the advice inverts. Structured options (CDED, partial enteral nutrition) carry remission-induction evidence if a reset is needed.</p>
+    <p><strong>Stress regulation</strong> — treated as a foundation, not an afterthought (see §5). Gut-directed hypnotherapy, MBSR, CBT, sleep, movement. Low/no cost, high leverage.</p>
+    <p><strong>Vitamin D — test, then correct.</strong> The highest-evidence supplement here and commonly deficient (~58% of patients). Randomized data show relapse reduction in Crohn's specifically. Dose to the measured 25(OH)D level — malabsorption can require 2,000–10,000 IU/day. Pair with K2.</p>
+    <p><strong>Butyrate</strong> — the most on-target single compound: colonocyte fuel and a regulatory-immune signal, exactly what a low-fiber diet strips out. Best fed via fermentable fiber; can also be supplemented directly.</p>
+    <p><strong>Micronutrients</strong> — check and replace the recurring small-bowel deficiencies: B12, iron, folate, zinc, magnesium. Cheap, and each affects energy and repair independent of disease activity. Worth a SIBO assessment too.</p>
+  </section>
+
+  <section id="layer-2" data-group="The Protocol" class="reveal">
+    <h2><span class="sec-num">9</span>Layer 2 — Antioxidants (NAC &amp; glutathione)</h2>
+    <p>This targets the <strong>reactive-oxygen-species arm of step 4</strong> — a node nothing in Layer 1 addresses head-on. Glutathione is the gut's master antioxidant, and it's specifically <em>depleted</em> in Crohn's tissue (the defect is partly one of synthesis, not just consumption). The honest evidence position: the depletion is well-documented; supplementation benefit is proven only at the precursor level (NAC) and so far only in ulcerative colitis. Strong rationale, low downside, worth trialing.</p>
+    <ul>
+      <li><strong>NAC</strong> — the glutathione precursor. A small, stable molecule that absorbs well as a <strong>plain capsule</strong> and gets converted to glutathione inside cells. No liposomal needed. ~600 mg once or twice daily.</li>
+      <li><strong>Liposomal glutathione</strong> — supplies finished glutathione while bypassing the gut enzymes that destroy ordinary oral glutathione. ~250–500 mg/day. Pair with a little vitamin C.</li>
+    </ul>
+    <div class="callout note">
+      <p><span class="label">Note — why glutathione is oral here, not injected.</span> Glutathione can't share the KLOW syringe (it would strip the copper out of one of the peptides), and injecting it separately would just mean a second daily shot. Liposomal oral glutathione sidesteps the whole issue and suits a gut target, so the protocol keeps it oral.</p>
+    </div>
+  </section>
+
+  <section id="layer-3" data-group="The Protocol" class="reveal">
+    <h2><span class="sec-num">10</span>Layer 3 — The repair peptides (KLOW)</h2>
+    <p>This is the experimental layer — mechanistically coherent, supported mostly by preclinical and community evidence, with minimal controlled human data in Crohn's. It's also the answer to a real gap: <strong>three of these four peptides target active tissue repair, which conventional drugs don't directly drive.</strong></p>
+    <p><strong>One product, four peptides.</strong> They're not mixed by hand — they come pre-combined in a single vial sold as a <strong>"KLOW" stack</strong> (an 80 mg blend: GHK-Cu 50 mg, TB-500 10 mg, BPC-157 10 mg, KPV 10 mg), reconstituted once with bacteriostatic water and drawn as one daily injection.</p>
+    <figure id="klowFig">
+      <img id="klowImg" src="klow-vial.png" alt="A KLOW vial — all four peptides pre-blended in one 80 mg product.">
+      <figcaption>A KLOW vial — all four peptides pre-blended in one 80 mg product.</figcaption>
+    </figure>
+    <p>A peptide is a short chain of amino acids — a signaling molecule that carries <em>instructions</em> to cells (grow a vessel here, migrate to close this wound, calm this pathway), rather than suppressing the immune system the way the drugs do. The body makes these naturally; the protocol supplies more repair signal where the disease has overwhelmed it.</p>
+    <h3>The four, individually</h3>
+    <ul>
+      <li><strong>BPC-157 — the gut peptide.</strong> Derived from a protein in gastric juice. Drives repair: stimulates new blood vessels (VEGF), blood flow, and fibroblast/collagen wound-closure; in animal models it heals intestinal lesions and fistulas. <em>The closest thing to a direct mucosal-repair agent — and not something conventional drugs do.</em></li>
+      <li><strong>TB-500 — the cell-migration peptide.</strong> A thymosin β-4 fragment that mobilizes cells to migrate in and reline damaged tissue; complements BPC-157. <em>Also a repair function conventional care leaves to chance.</em></li>
+      <li><strong>GHK-Cu — the remodeling peptide.</strong> A copper tripeptide that drives connective-tissue remodeling and induces the body's antioxidant enzymes. <em>Partly overlaps the antioxidant arm; one caveat — in stricturing disease, a collagen-stimulating peptide deserves extra thought.</em></li>
+      <li><strong>KPV — the anti-inflammatory (the honest exception).</strong> An α-MSH fragment that inhibits NF-κB and concentrates in inflamed tissue via the PepT1 transporter. <em>This overlaps what the drugs already do — same node, gentler delivery, not a new mechanism.</em></li>
+    </ul>
+    <h3>Does it target something otherwise untreated?</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Peptide</th>
+            <th>What it does for Crohn's</th>
+            <th>Loop node</th>
+            <th>Covered by standard Rx?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>BPC-157</strong></td>
+            <td data-label="What it does">Active mucosal/barrier repair, new blood supply</td>
+            <td data-label="Loop node">Barrier + repair (1,4)</td>
+            <td data-label="Covered by Rx?"><strong>Gap — not treated</strong></td>
+          </tr>
+          <tr>
+            <td><strong>TB-500</strong></td>
+            <td data-label="What it does">Mobilizes cells to reline damaged bowel</td>
+            <td data-label="Loop node">Tissue repair (4)</td>
+            <td data-label="Covered by Rx?"><strong>Gap — not treated</strong></td>
+          </tr>
+          <tr>
+            <td><strong>GHK-Cu</strong></td>
+            <td data-label="What it does">Tissue remodeling + antioxidant induction</td>
+            <td data-label="Loop node">Remodeling + ROS</td>
+            <td data-label="Covered by Rx?">Partial overlap</td>
+          </tr>
+          <tr>
+            <td><strong>KPV</strong></td>
+            <td data-label="What it does">Local, targeted anti-inflammation</td>
+            <td data-label="Loop node">Cytokine cascade (3)</td>
+            <td data-label="Covered by Rx?">Overlaps drugs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p><em>The strategic case rests on the top two rows.</em></p>
+    <p><strong>Dosing principles.</strong> These signaling peptides have a <em>flat dose-response</em> — frequency and consistency matter more than larger doses, so titrate the daily draw up slowly and conservatively. Injection is the right route here (no oral workaround exists, unlike glutathione). Insist on third-party Certificate-of-Analysis purity and strict sterile technique — doubly important alongside immunosuppression.</p>
+  </section>
+
+  <section id="daily-rhythm" data-group="The Protocol" class="reveal">
+    <h2><span class="sec-num">11</span>Daily rhythm &amp; monitoring</h2>
+    <p>Day to day, the stack is simple: the foundational pills and the antioxidants daily (vitamin D with a fat-containing meal), the KLOW injection daily in its own syringe and site, sleep and a short stress practice daily, and a weekly mind-body session (hypnotherapy / MBSR / CBT) or movement block. The exact timing and doses are for Yosef and his clinician to set.</p>
+    <p>The discipline that makes it legible: <strong>change one thing at a time</strong> so any reaction is attributable, and keep a short <strong>symptom journal</strong>. Track progress with periodic labs — <strong>calprotectin, CRP, and 25(OH)D</strong> — as ordered by the care team.</p>
+  </section>
+
+  <section id="at-a-glance" data-group="The Protocol" class="reveal">
+    <h2><span class="sec-num">12</span>The protocol at a glance</h2>
+    <p>One master table for everything taken — when, how much, what it costs, where to get it, and why. (Per item; the four-layer logic from §7 still applies.) Prices are US ballparks (mid-2026) and drift; product links are representative, not endorsements.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>When / dose</th>
+            <th>~Monthly</th>
+            <th>Recommended (&amp; alt)</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Vitamin D3 + K2</strong></td>
+            <td data-label="When / dose">Daily, to lab level</td>
+            <td data-label="~Monthly">$6–12</td>
+            <td data-label="Recommended"><a href="https://www.amazon.com/Thorne-Research-Dispenser-Supplement-Vitamins/dp/B0038NF8MG" target="_blank" rel="noopener noreferrer">Thorne D + K2 Liquid</a> · alt: Sports Research / Pure Encaps</td>
+            <td data-label="Notes">Liquid lets you titrate to 25(OH)D; with a fat meal; K2 as MK-7</td>
+          </tr>
+          <tr>
+            <td><strong>NAC</strong></td>
+            <td data-label="When / dose">600 mg, 1–2×/day</td>
+            <td data-label="~Monthly">$10–25</td>
+            <td data-label="Recommended"><a href="https://www.amazon.com/Nutricost-N-Acetyl-L-Cysteine-600mg-Capsules/dp/B01CUQFKW4" target="_blank" rel="noopener noreferrer">Nutricost NAC 600 mg</a> · alt: <a href="https://www.amazon.com/Thorne-Research-Cysteplus-N-Acetylcysteine-Detoxification/dp/B000FGZG3A" target="_blank" rel="noopener noreferrer">Thorne NAC</a></td>
+            <td data-label="Notes">Plain capsule — no liposomal needed; empty stomach; faint sulfur smell is normal · <em>clear with oncologist</em></td>
+          </tr>
+          <tr>
+            <td><strong>Liposomal glutathione</strong></td>
+            <td data-label="When / dose">250–500 mg/day</td>
+            <td data-label="~Monthly">$30–60</td>
+            <td data-label="Recommended"><a href="https://www.amazon.com/Superior-Liposomal-Glutathione-Setria%C2%AE-Detoxification/dp/B07GY2GX22" target="_blank" rel="noopener noreferrer">Codeage Setria 500 mg</a> · alt: Pure Encaps Liposomal</td>
+            <td data-label="Notes">Look for "Setria" + liposomal; pair with a little vitamin C · <em>clear with oncologist</em></td>
+          </tr>
+          <tr>
+            <td><strong>Butyrate</strong></td>
+            <td data-label="When / dose">300–600 mg/day</td>
+            <td data-label="~Monthly">$20–35</td>
+            <td data-label="Recommended"><a href="https://www.amazon.com/s?k=tributyrin+supplement" target="_blank" rel="noopener noreferrer">Tributyrin — DFH / Tesseract</a> · alt: <a href="https://www.amazon.com/BodyBio-Sodium-Butyrate-Postbiotic-Microbiome/dp/B0058A9SF0" target="_blank" rel="noopener noreferrer">BodyBio Sodium</a> / <a href="https://www.amazon.com/BodyBio-Butyrate-Calcium-Magnesium-Microbiome/dp/B002QO08AU" target="_blank" rel="noopener noreferrer">Cal-Mag</a></td>
+            <td data-label="Notes">Tributyrin releases in the colon and is odorless — best for a gut target; start low</td>
+          </tr>
+          <tr>
+            <td><strong>Micronutrients</strong></td>
+            <td data-label="When / dose">As indicated</td>
+            <td data-label="~Monthly">$15–30</td>
+            <td data-label="Recommended">B12, iron, folate, zinc, magnesium</td>
+            <td data-label="Notes">Replace measured small-bowel deficiencies; consider a SIBO check</td>
+          </tr>
+          <tr>
+            <td><strong>Fiber</strong></td>
+            <td data-label="When / dose">Food-first, daily</td>
+            <td data-label="~Monthly">— (food)</td>
+            <td data-label="Recommended">PHGG / Sunfiber if supplementing</td>
+            <td data-label="Notes">Soluble/fermentable to feed butyrate producers; easy on bulky insoluble fiber if stricturing</td>
+          </tr>
+          <tr>
+            <td><strong>Stress / mind-body</strong></td>
+            <td data-label="When / dose">Daily + weekly</td>
+            <td data-label="~Monthly">$0–30</td>
+            <td data-label="Recommended">Hypnotherapy / MBSR / CBT, sleep</td>
+            <td data-label="Notes">Mostly free; high leverage</td>
+          </tr>
+          <tr>
+            <td><strong>KLOW blend</strong> (injectable)</td>
+            <td data-label="When / dose">1 inj./day, 5–7×/wk</td>
+            <td data-label="~Monthly">$95–135</td>
+            <td data-label="Recommended">COA-verified peptide source (see §10)</td>
+            <td data-label="Notes">One 80 mg vial ≈ 1 month; own syringe/site; <em>insist on third-party COA</em> · <em>clear with oncologist</em></td>
+          </tr>
+          <tr>
+            <td><strong>Injection supplies</strong></td>
+            <td data-label="When / dose">Ongoing</td>
+            <td data-label="~Monthly">$15–25</td>
+            <td data-label="Recommended">Bacteriostatic water, insulin syringes, swabs</td>
+            <td data-label="Notes">—</td>
+          </tr>
+          <tr class="total-row">
+            <td><strong>Core total</strong></td>
+            <td data-label="When / dose">—</td>
+            <td data-label="~Monthly"><strong>~$190–350</strong></td>
+            <td data-label="Recommended">—</td>
+            <td data-label="Notes">Per month; foundations carry most of the evidence at the lowest cost</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout note">
+      <p><span class="label">Note — before ordering.</span> Given the chemotherapy: <strong>NAC, glutathione, and KLOW are the items to clear with the oncologist first</strong> (high-dose antioxidants during chemo are debated; injectables raise infection considerations under immunosuppression), and <strong>vitamin D should be dosed from an actual 25(OH)D blood level</strong>, not estimated.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- ===================== MORE ===================== -->
+
+  <section id="bigger-picture" data-group="The Protocol" class="reveal">
+    <h2>The bigger picture</h2>
+    <div class="thesis">
+      <p>Strip the diagnosis away and what remains is, almost line for line, a protocol that recovery-focused athletes and longevity practitioners pay for — because these compounds do desirable things in <em>anyone</em>. Better skin and hair (GHK-Cu is a mainstay of skincare and hair-restoration; it's part of why I run KLOW), faster tendon/joint/muscle recovery (BPC-157, TB-500), broad antioxidant and metabolic support (NAC, glutathione, vitamin D, butyrate). The Crohn's case sharpens the <em>why</em>; it doesn't narrow the <em>benefit</em>.</p>
+    </div>
+    <p>This isn't the maintenance of a defective machine. It's barrier support, microbiome care, lower inflammatory and oxidative load, calmer gut–brain signaling, and enhanced repair — the same architecture the most deliberate people pursue with no diagnosis at all. Crohn's just makes the work non-optional and its effects visible. It's a journey worth being on regardless — and one we can go through together.</p>
+  </section>
+
+  <section id="sources" data-group="The Protocol" class="reveal">
+    <h2>Important &amp; sources</h2>
+    <p>This is an educational synthesis, not medical advice, and Claude is not a physician. Crohn's is serious and individual; the conventional therapies a gastroenterologist prescribes are the backbone, and everything here is adjunctive to — and coordinated with — that care, never a replacement. The investigational peptides are not approved Crohn's treatments and carry unknowns in purity, dosing and long-term safety, amplified under immunosuppression. Share the full list, injectables included, with the treating oncologist and gastroenterologist before starting.</p>
+    <p class="preface"><em>Selected sources: twin-concordance and GWAS literature on Crohn's heritability (NOD2/ATG16L1/IRGM); Kaplan &amp; Windsor, four epidemiological stages of the global IBD pandemic; Japan–US comparative incidence/prevalence data; Jørgensen et al., vitamin D3 relapse-prevention RCT in Crohn's; NAC remission-maintenance RCT in ulcerative colitis; glutathione-depletion and impaired-synthesis studies in IBD (Nutrition Research 1997; Gut 1998); Inorg Chem 2021 on glutathione reducing Cu(II)GHK; preclinical BPC-157, TB-500, KPV and GHK-Cu tissue-repair literature; EEN/CDED remission-induction trials. Figures are approximate as of June 2026.</em></p>
+  </section>
+
+</main>
+
+<footer>
+  <p>Prepared for Yosef · Educational synthesis, not medical advice · mid-2026</p>
+</footer>
+
+<button id="totop" aria-label="Back to top" title="Back to top">↑</button>
+
+<script>
+(function () {
+  "use strict";
+
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+
+  /* ---------- Build the Table of Contents ---------- */
+  var tocList = document.getElementById('tocList');
+  var groups = {};
+  var groupOrder = [];
+  sections.forEach(function (sec) {
+    var g = sec.getAttribute('data-group') || 'More';
+    if (!groups[g]) { groups[g] = []; groupOrder.push(g); }
+    groups[g].push(sec);
+  });
+
+  var linksById = {};
+  groupOrder.forEach(function (g) {
+    var label = document.createElement('div');
+    label.className = 'toc-group-label';
+    label.textContent = g;
+    tocList.appendChild(label);
+
+    groups[g].forEach(function (sec) {
+      var h2 = sec.querySelector('h2');
+      var numEl = h2 ? h2.querySelector('.sec-num') : null;
+      var num = numEl ? numEl.textContent.trim() : '';
+      // title text without the leading number span
+      var title = h2 ? h2.textContent.replace(/^\s*\d+\s*/, '').trim() : sec.id;
+
+      var a = document.createElement('a');
+      a.className = 'toc-link';
+      a.href = '#' + sec.id;
+      a.setAttribute('data-target', sec.id);
+      if (num) {
+        var ns = document.createElement('span');
+        ns.className = 'num';
+        ns.textContent = num;
+        a.appendChild(ns);
+      }
+      var ts = document.createElement('span');
+      ts.textContent = title;
+      a.appendChild(ts);
+
+      tocList.appendChild(a);
+      linksById[sec.id] = a;
+    });
+  });
+
+  /* ---------- Contents sheet open/close ---------- */
+  var sheet = document.getElementById('sheet');
+  var scrim = document.getElementById('scrim');
+  var btn = document.getElementById('contentsBtn');
+  var closeBtn = document.getElementById('sheetClose');
+
+  function openSheet() {
+    sheet.classList.add('open');
+    scrim.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    sheet.setAttribute('aria-hidden', 'false');
+  }
+  function closeSheet() {
+    sheet.classList.remove('open');
+    scrim.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    sheet.setAttribute('aria-hidden', 'true');
+  }
+  function toggleSheet() {
+    if (sheet.classList.contains('open')) closeSheet(); else openSheet();
+  }
+
+  btn.addEventListener('click', toggleSheet);
+  closeBtn.addEventListener('click', closeSheet);
+  scrim.addEventListener('click', closeSheet);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && sheet.classList.contains('open')) closeSheet();
+  });
+
+  // Close after tapping a TOC link (smooth scroll handled by CSS)
+  tocList.addEventListener('click', function (e) {
+    var a = e.target.closest('a.toc-link');
+    if (a) { closeSheet(); }
+  });
+
+  /* ---------- Reading progress bar ---------- */
+  var progress = document.getElementById('progress');
+  var totop = document.getElementById('totop');
+  var ticking = false;
+
+  function onScroll() {
+    var doc = document.documentElement;
+    var scrollTop = doc.scrollTop || document.body.scrollTop;
+    var height = doc.scrollHeight - doc.clientHeight;
+    var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+    progress.style.width = pct + '%';
+    progress.setAttribute('aria-valuenow', Math.round(pct));
+
+    if (scrollTop > 600) totop.classList.add('show');
+    else totop.classList.remove('show');
+
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
+  }, { passive: true });
+  onScroll();
+
+  totop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ---------- Scroll-spy (highlight current section) ---------- */
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        Object.keys(linksById).forEach(function (k) {
+          linksById[k].classList.toggle('active', k === id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+  sections.forEach(function (s) { spy.observe(s); });
+
+  /* ---------- Section reveal on scroll ---------- */
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var revObs = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    reveals.forEach(function (el) { revObs.observe(el); });
+  }
+
+  /* ---------- Hide KLOW figure gracefully if image missing ---------- */
+  var klowImg = document.getElementById('klowImg');
+  var klowFig = document.getElementById('klowFig');
+  if (klowImg) {
+    klowImg.addEventListener('error', function () {
+      if (klowFig) klowFig.classList.add('img-failed');
+    });
+    // if it never loads (e.g. 0 bytes), also check after load
+    if (klowImg.complete && klowImg.naturalWidth === 0) {
+      if (klowFig) klowFig.classList.add('img-failed');
+    }
+  }
+})();
+</script>
+</body>
+</html>
